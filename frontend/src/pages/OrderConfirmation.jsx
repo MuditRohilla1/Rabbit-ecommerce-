@@ -1,5 +1,5 @@
 const CheckOut = {
-  _id: "",
+  _id: "23456",
   createdAt: new Date(),
   checkoutItems: [
     {
@@ -68,7 +68,7 @@ const OrderConfirmation = () => {
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="w-16  h-16 object-cover rounded-md mr-4"
+                  className="w-16 h-16 object-cover rounded-md mr-4"
                 />
                 <div>
                   <h4 className="text-md font-semibold">{item.name}</h4>
