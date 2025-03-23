@@ -12,6 +12,9 @@ import CheckOut from "./components/cart/CheckOut";
 import OrderConfirmation from "./pages/OrderConfirmation";
 import OrderDetailsPage from "./pages/OrderDetailsPage";
 import MyOrders from "./pages/MyOrders";
+import AdminLayout from "./components/admin/AdminLayout";
+import AdminHome from "./pages/AdminHome";
+import UserManagement from "./components/admin/UserManagement";
 
 const App = () => {
   return (
@@ -26,11 +29,14 @@ const App = () => {
           <Route path="/collections/:collection" element={<CollectionPage />} />
           <Route path="products/:id" element={<ProductDetails />} />
           <Route path="/checkout" element={<CheckOut />} />
-          <Route path="order-confirmation" element={<OrderConfirmation/>}/>
-          <Route path="order/:id" element={<OrderDetailsPage/>}/>
-          <Route path="/my-orders" element={<MyOrders/>}/>
+          <Route path="order-confirmation" element={<OrderConfirmation />} />
+          <Route path="order/:id" element={<OrderDetailsPage />} />
+          <Route path="/my-orders" element={<MyOrders />} />
         </Route>
-        {/* <Route path="/admin" element={<UserLayout />}></Route> */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<AdminHome />} />
+          <Route path="users" element={<UserManagement />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
