@@ -10,7 +10,7 @@ const cart = {
       size: "M",
       color: "red",
       quantity: 2,
-      price: 1500,
+      price: 15,
       image: "https://picsum.photos/200?random=1",
     },
     {
@@ -19,11 +19,11 @@ const cart = {
       size: "L",
       color: "black",
       quantity: 1,
-      price: 30099,
+      price: 30,
       image: "https://picsum.photos/200?random=2",
     },
   ],
-  totalPrice: 31599,
+  totalPrice: 45,
 };
 
 const CheckOut = () => {
