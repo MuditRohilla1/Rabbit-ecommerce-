@@ -28,4 +28,13 @@ const protect = async (req, res, next) => {
   }
 };
 
-module.exports = { protect };
+// Check id user is admin
+const checkIfUserIsAdmin = async (req, res, next) => {
+  if(req.user && req.user.role === "admin") {
+    next();
+  } else {
+    return res.status(403).json({ msg: "You are not authorized Admin"});
+  }
+}
+
+module.exports = { protect,  checkIfUserIsAdmin};
