@@ -118,7 +118,7 @@ router.put("/:id", protect, checkIfUserIsAdmin, async (req, res) => {
       product.weight = weight || product.weight;
       product.sku = sku || product.sku;
 
-    // save the updated product
+      // save the updated product
       const updatedProduct = await product.save();
       res.status(200).json({ updatedProduct });
     } else {
@@ -127,6 +127,23 @@ router.put("/:id", protect, checkIfUserIsAdmin, async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Failed to update product" });
+  }
+});
+
+// DELETE /api/products/:id
+// delete a prodcut by its id
+router.delete("/:id", protect, checkIfUserIsAdmin, async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+    if (product) {
+      await product.deleteOne();
+      res.status(200).json({ message: "Product deleted successfully" });
+    } else {
+      res.status(404).json({ message: "Product not found" });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Failed to delete product" });
   }
 });
 
