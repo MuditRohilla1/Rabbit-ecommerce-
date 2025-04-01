@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const connectDB = require("./config/db");
 const userRoutes = require('./routes/user.routes.js');
 const productRoutes = require('./routes/product.routes.js')
+const cartRoutes = require('./routes/cart.routes.js')
 
 const app = express();
 app.use(express.json());
@@ -22,6 +23,7 @@ app.get("/", (req, res) => {
 // Api Routes
 app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
+app.use("/api/cart", cartRoutes);
 
 app.listen(PORT, () => {
     console.log(`server is running on http://localhost:${PORT}`);
