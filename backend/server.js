@@ -5,6 +5,9 @@ const connectDB = require("./config/db");
 const userRoutes = require('./routes/user.routes.js');
 const productRoutes = require('./routes/product.routes.js')
 const cartRoutes = require('./routes/cart.routes.js')
+const checkoutRoutes = require('./routes/checkout.routes.js')
+const orderRoutes = require('./routes/order.routes.js')
+const uploadRoutes = require('./routes/upload.routes.js')
 
 const app = express();
 app.use(express.json());
@@ -24,6 +27,9 @@ app.get("/", (req, res) => {
 app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/cart", cartRoutes);
+app.use("/api/checkout", checkoutRoutes);
+app.use("/api/orders", orderRoutes);
+app.use("/api/upload", uploadRoutes);
 
 app.listen(PORT, () => {
     console.log(`server is running on http://localhost:${PORT}`);
