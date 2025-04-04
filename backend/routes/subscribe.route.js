@@ -25,3 +25,5 @@ router.post("/subscribe", async (req, res) => {
     res.status(500).json({ message: "Failed to subscribe to the newsletter" });
   }
 });
+
+module.exports = router;
