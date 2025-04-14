@@ -2,34 +2,33 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import register from "../assets/register.webp";
 import { toast } from "sonner";
+import { registerUser } from "../redux/authSlice";
+import { useDispatch } from "react-redux";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(registerUser({ name, email, password }));
     try {
-        toast.success("User registered Successfully")
-        console.log("User registered:", {
-            name: name,
-            email: email,
-            password: password
-        })
-        setEmail("")
-        setName("")
-        setPassword("");
+      toast.success("User registered Successfully");
     } catch (error) {
-        toast.error("Error registering user")
-        console.error("Error registering user:", error)
+      toast.error("Error registering user");
+      console.error("Error registering user:", error);
     }
-  }
+  };
 
   return (
     <div className="flex">
       <div className="w-full md:w-1/2 flex flex-col justify-center items-center p-8 md:p-12">
-        <form onSubmit={handleSubmit} className="w-full max-w-md bg-white p-8 rounded-lg border-2 border-black shadow-md">
+        <form
+          onSubmit={handleSubmit}
+          className="w-full max-w-md bg-white p-8 rounded-lg border-2 border-black shadow-md"
+        >
           <div className="flex justify-center mb-6">
             <h2 className="text-2xl font-medium">"Rabbit"</h2>
           </div>

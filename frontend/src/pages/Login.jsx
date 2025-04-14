@@ -1,24 +1,22 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import login from "../assets/login.webp";
+import { loginUser } from "../redux/authSlice";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
-  const handleLogin = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(loginUser({ email, password }));
     try {
       toast.success("User Logined Successfully");
-      console.log("User Logined:", {
-        email: email,
-        password: password,
-      });
-      setEmail("");
-      setPassword("");
     } catch (error) {
-      toast.error("Error Login user");
-      console.error("Error Login user:", error);
+      toast.error("Error Logging In user");
+      console.error("Error Logging In user:", error);
     }
   };
 
@@ -26,7 +24,7 @@ const Login = () => {
     <div className="flex">
       <div className="w-full md:w-1/2 flex flex-col justify-center items-center p-8 md:p-12">
         <form
-          onSubmit={handleLogin}
+          onSubmit={handleSubmit}
           className="w-full max-w-md bg-white p-8 rounded-lg border-2 border-black shadow-md"
         >
           <div className="flex justify-center mb-6">
